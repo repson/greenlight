@@ -6,7 +6,7 @@ import (
 )
 
 func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Status: available")
+	fmt.Fprintf(w, "Status: available \n")
 	fmt.Fprintf(w, "Environment: %s\n", app.config.env)
 	fmt.Fprintf(w, "Version: %s\n", version)
 }
