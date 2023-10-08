@@ -10,6 +10,8 @@ import (
 	"os"
 	"time"
 
+	"github.com/repson/greenlight/internal/data"
+
 	_ "github.com/lib/pq"
 )
 
@@ -29,6 +31,7 @@ type config struct {
 type application struct {
 	config config
 	logger *slog.Logger
+	models data.Models
 }
 
 func main() {
@@ -54,13 +57,13 @@ func main() {
 
 	defer db.Close()
 
+	logger.Info("Database connection pool established")
+
 	app := &application{
 		config: cfg,
 		logger: logger,
+		models: data.NewModels(db),
 	}
-
-	mux := http.NewServeMux()
-	mux.HandleFunc("/v1/healthcheck", app.healthcheckHandler)
 
 	srv := &http.Server{
 		Addr:         fmt.Sprintf(":%d", cfg.port),
