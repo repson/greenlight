@@ -52,10 +52,6 @@ func (m MovieModel) Insert(movie *Movie) error {
 	return m.DB.QueryRow(query, args...).Scan(&movie.ID, &movie.CreatedAt, &movie.Version)
 }
 
-func (m MovieModel) Get(id int64) (*Movie, error) {
-	return nil, nil
-}
-
 func (m MovieModel) Update(movie *Movie) error {
 	return nil
 }
