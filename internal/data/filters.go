@@ -1,6 +1,6 @@
 package data
 
-type filters struct {
+type Filters struct {
 	Page     int
 	PageSize int
 	Sort     string
