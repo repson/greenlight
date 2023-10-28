@@ -8,7 +8,7 @@ import (
 	"encoding/base32"
 	"time"
 
-	"github.com/repson/internal/validator"
+	"github.com/repson/greenlight/internal/validator"
 )
 
 const (
