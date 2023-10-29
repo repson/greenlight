@@ -12,3 +12,4 @@ API Endpoints and RESTful Routing:
 | DELETE | /v1/movies/:id   | deleteMovieHandler    | Delete a specific movie               |
 | POST   | /v1/users        | registerUserHandler   | Register a new user                   |
 | PUT    | /v1/users/activated | activatedUserHandler | Activate a specific user            |
+| POST   | /v1/tokens/authentication | createAuthenticationTokenHandler | Generate a new authentication token |
