@@ -103,6 +103,7 @@ func (app *application) authenticate(next http.Handler) http.Handler {
 		headerParts := strings.Split(authorizationHeader, " ")
 		fmt.Println("headerParts", headerParts)
 		if len(headerParts) != 2 || headerParts[0] != "Bearer" {
+			fmt.Println("bad header len or headerParts[0] != Bearer")
 			app.invalidAuthenticationTokenResponse(w, r)
 			return
 		}
@@ -112,6 +113,7 @@ func (app *application) authenticate(next http.Handler) http.Handler {
 		v := validator.New()
 
 		if data.ValidateTokenPlaintext(v, token); !v.Valid() {
+			fmt.Println("token not valid")
 			app.invalidAuthenticationTokenResponse(w, r)
 			return
 		}
@@ -121,6 +123,7 @@ func (app *application) authenticate(next http.Handler) http.Handler {
 		if err != nil {
 			switch {
 			case errors.Is(err, data.ErrRecordNotFound):
+				fmt.Println("record not found")
 				app.invalidAuthenticationTokenResponse(w, r)
 			default:
 				app.serverErrorResponse(w, r, err)

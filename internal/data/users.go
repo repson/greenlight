@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"database/sql"
 	"errors"
+	"fmt"
 	"time"
 
 	"github.com/repson/greenlight/internal/validator"
@@ -181,6 +182,7 @@ func (m UserModel) Update(user *User) error {
 
 func (m UserModel) GetForToken(tokenScope, tokenPlaintext string) (*User, error) {
 	tokenHash := sha256.Sum256([]byte(tokenPlaintext))
+	fmt.Println("tokenHash", tokenHash[:])
 
 	query := `
 		SELECT users.id, users.created_at, users.name, users.email, users.password_hash, users.activated, users.version
