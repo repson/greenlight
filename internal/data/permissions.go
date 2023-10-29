@@ -1,10 +1,10 @@
 package data
 
-import {
+import (
 	"context"
 	"database/sql"
 	"time"
-}
+)
 
 type Permissions []string
 
