@@ -101,6 +101,7 @@ func (app *application) authenticate(next http.Handler) http.Handler {
 		}
 
 		headerParts := strings.Split(authorizationHeader, " ")
+		fmt.Println("headerParts", headerParts)
 		if len(headerParts) != 2 || headerParts[0] != "Bearer" {
 			app.invalidAuthenticationTokenResponse(w, r)
 			return
@@ -116,6 +117,7 @@ func (app *application) authenticate(next http.Handler) http.Handler {
 		}
 
 		user, err := app.models.Users.GetForToken(token, data.ScopeAuthentication)
+		fmt.Println("user", user)
 		if err != nil {
 			switch {
 			case errors.Is(err, data.ErrRecordNotFound):
