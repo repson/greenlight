@@ -118,7 +118,7 @@ func (app *application) authenticate(next http.Handler) http.Handler {
 			return
 		}
 
-		user, err := app.models.Users.GetForToken(token, data.ScopeAuthentication)
+		user, err := app.models.Users.GetForToken(data.ScopeAuthentication, token)
 		fmt.Println("user", user)
 		if err != nil {
 			switch {
