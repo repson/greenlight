@@ -14,7 +14,7 @@ run/api:
 db/psql:
 	psql ${GREENLIGHT_DB_DSN}
 
-## db/migration/new: name=$1: create a new database migration
+## db/migration/new name=$1: create a new database migration
 db/migration/new:
 	@echo 'Creating new migration files for ${name}...'
 	migrate create -seq -ext=.sql -dir=./migrations ${name}
