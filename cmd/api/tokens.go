@@ -65,7 +65,7 @@ func (app *application) createAuthenticationTokenHandler(w http.ResponseWriter, 
 	}
 }
 
-func (app *application) getAuthenticationTokenForUserHandler(w http.ResponseWriter, r *http.Request) {
+func (app *application) createPasswordResetTokenHandler(w http.ResponseWriter, r *http.Request) {
 	var input struct {
 		Email string `json:"email"`
 	}
@@ -88,7 +88,7 @@ func (app *application) getAuthenticationTokenForUserHandler(w http.ResponseWrit
 		switch {
 		case errors.Is(err, data.ErrRecordNotFound):
 			v.AddError("email", "no matching email address found")
-			app.invalidCredentialsResponse(w, r, v.Errors)
+			app.failedValidationResponse(w, r, v.Errors)
 		default:
 			app.serverErrorResponse(w, r, err)
 		}
