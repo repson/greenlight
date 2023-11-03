@@ -16,3 +16,4 @@ API Endpoints and RESTful Routing:
 | GET    | /debug/vars      | expvar.Handler()      | Display application metrics           |
 | POST   | /v1/tokens/password-reset | createPasswordResetTokenHanlder | Generate a new password reset token |
 | PUT    | /v1/users/password | updateUserPasswordHandler | Update the password for a specific user |
+| POST   | /v1/tokens/activation    | createActivationTokenHandler | Generate a new activation token |
