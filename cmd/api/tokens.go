@@ -107,7 +107,7 @@ func (app *application) getAuthenticationTokenForUserHandler(w http.ResponseWrit
 		return
 	}
 
-	app.background(func()) {
+	app.background(func() {
 		data := map[string]any{
 			"passwordResetToken": token.Plaintext,
 		}
@@ -118,9 +118,9 @@ func (app *application) getAuthenticationTokenForUserHandler(w http.ResponseWrit
 		}
 	})
 
-	err := envelope{"message": "an email will be sent to you containing password reset instructions"}
+	env := envelope{"message": "an email will be sent to you containing password reset instructions"}
 
-	err = app.writeJSON(w, http.StatusAccepted, env, nil}
+	err = app.writeJSON(w, http.StatusAccepted, env, nil)
 	if err != nil {
 		app.serverErrorResponse(w, r, err)
 	}
