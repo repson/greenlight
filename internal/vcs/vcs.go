@@ -10,7 +10,7 @@ func Version() string {
 	var modified bool
 
 	bi, ok := debug.ReadBuildInfo()
-	if !ok {
+	if ok {
 		for _, s := range bi.Settings {
 			switch s.Key {
 			case "vcs.revision":
