@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is a JSON API for retreiving and managing information about movies. I have built while reading the [Let's Go Further](https://lets-go-further.alexedwards.net/).
+This application is a JSON API for retreiving and managing information about movies. I have built while reading the book [Let's Go Further](https://lets-go-further.alexedwards.net/).
 
 ## Prerequisites
 
